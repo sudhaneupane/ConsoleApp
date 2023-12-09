@@ -4,17 +4,17 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            int result;
+            float result;
             string answer;
             Console.WriteLine("Hello! Welcome to the calculator");
             Console.WriteLine("Please enter your first number");
-            int num1 = Convert.ToInt32(Console.ReadLine());
+            float num1 = float.Parse(Console.ReadLine());
             Console.WriteLine("Please enter your second number");
-            int num2 = Convert.ToInt32(Console.ReadLine());
+            float num2 = float.Parse(Console.ReadLine());
             Console.WriteLine("What operation do you want to perform?");
-            Console.WriteLine("Please enter a for addition, s for substrsction, m for multiplication, d for division") ;
+            Console.WriteLine("Please enter a for addition, s for substrsction, m for multiplication, any other key for division") ;
 
-            answer = Console.ReadLine();
+            answer = Console.ReadLine().ToLower();
 
             if (answer == "a")
             {
@@ -30,11 +30,17 @@ namespace Calculator
             }
             else
             {
-                result = num1 / num2;
+                result =num2==0? float.NaN: num1 / num2;
             }
-            Console.WriteLine("The result is: " +result);
+            if (float.IsNaN(result))
+            {
+                Console.WriteLine("Cannot perform division by 0!");
+            }
+            else
+            {
+                Console.WriteLine("The result is: " + result);
+            }
 
-            Console.WriteLine("Thank you for using basic calculator program");
             Console.ReadKey();
         }
     }
