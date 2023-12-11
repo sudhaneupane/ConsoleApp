@@ -1,4 +1,4 @@
-
+using System;
 namespace Dice_Game
 {
     internal class Program
